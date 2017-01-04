@@ -1,0 +1,15 @@
+
+function convertToRoman(num) {
+ var myRomSim = [];
+  var romSim = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+  var arNum = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+  for(i = 0; i < romSim.length; i++){
+    while(num >= arNum[i]){
+      myRomSim +=romSim[i];
+      num -= arNum[i];
+    }
+  }
+ return myRomSim;
+}
+
+convertToRoman(36);
