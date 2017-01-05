@@ -1,0 +1,33 @@
+function whatIsInAName(collection, source) {
+  var srcKeys = Object.keys(source);
+  
+  return collection.filter(function (item) {
+    for(var i = 0; i < srcKeys.length; i++) {
+      if(!item.hasOwnProperty(srcKeys[i]) || item[srcKeys[i]] !== source[srcKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  });
+  
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+=============
+измененный мной ниже
+---------
+function whatIsInAName(collection, source) {
+  var prop = Object.keys(source);
+  
+  return collection.filter(function (smb) {
+    for(var i = 0; i < prop.length; i++) {
+      if(!smb.hasOwnProperty(prop[i]) || smb[prop[i]] !== source[prop[i]]) {
+        return false;
+      }
+    }
+    return true;
+  });
+  
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
