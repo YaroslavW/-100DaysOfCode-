@@ -1,0 +1,18 @@
+function myReplace(str, before, after) {
+  str = str.split(' ');
+  
+  if(before[0] === before[0].toUpperCase() ) {
+    after = after.charAt(0).toUpperCase() + after.slice(1);
+  }
+  
+  for(var i=0; i<str.length; i++) {
+    if(str[i] == before) {
+      str[i] = after;
+      return str.join(' ');
+    }
+  }
+  return str;
+}
+
+myReplace("His name is Tom", "Tom", "john");
+//myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
