@@ -1,0 +1,17 @@
+function translatePigLatin(str) {
+  var strArray = str.split("");
+  var vowNum = str.search(/["aeoui"]/g);
+  var subStr = str.substr(0, vowNum);
+if(vowNum === 0){
+  strArray.push("w","a","y");
+   return strArray.join("");
+}
+for(var i in subStr){
+   strArray.push(subStr[i]);
+   strArray.shift(subStr[i]);
+}
+   strArray.push("a","y");
+  return strArray.join("");
+}
+
+translatePigLatin("consonant");
