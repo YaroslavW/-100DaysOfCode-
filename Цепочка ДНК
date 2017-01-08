@@ -1,0 +1,23 @@
+function pairElement(str) {
+  var strArray = str.split("");
+  var newArray = [];
+  var toLet = function(test){
+    switch(test){
+      case "A":
+        return "T";
+      case "T":
+        return "A";
+      case "G":
+        return "C";
+      case "C":
+        return "G";
+      default:
+        break;
+    }
+  };
+for(var i = 0; i < strArray.length; i++){
+  newArray.push([strArray[i], toLet(strArray[i])]);
+}
+  
+  return newArray;
+}
