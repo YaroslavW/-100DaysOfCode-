@@ -1,0 +1,18 @@
+var numArray = [];
+var num ;
+var strArray = str.split("");
+var ch;
+for(var i = 0; i < strArray.length; i++){
+  numArray.push(str.charCodeAt(i));
+}
+for(k = 0; k < numArray.length; k++){
+  if((numArray[k]+1) < (numArray[k+1])){
+    num = numArray[k]+1;
+     return String.fromCharCode(num);
+  }  
+ 
+} 
+  return num; 
+}
+
+fearNotLetter("abce");
