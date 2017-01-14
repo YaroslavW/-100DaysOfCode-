@@ -1,0 +1,8 @@
+
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  return str.replace(/([a-zA-Z])([^a-zA-Z]|(?=[A-Z]))/g,"$1-").toLowerCase();
+}
+
+spinalCase('This Is Spinal Tap');
