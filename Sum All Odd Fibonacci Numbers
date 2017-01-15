@@ -1,0 +1,19 @@
+
+function sumFibs(num) {
+  var Num1 = 0;
+ var Num2 = 1;
+  var sumNum = 0;
+  var answer = 0;
+  while(Num2 <= num){
+    if(Num2 % 2 !== 0){
+      answer += Num2;
+    }
+    sumNum =Num1 + Num2;
+    Num1 = Num2;
+    Num2 = sumNum;
+    
+  }
+  return answer;
+}
+
+sumFibs(4);
