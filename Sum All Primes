@@ -1,0 +1,22 @@
+
+function sumPrimes(num) {
+  var prArray = [];
+  var prNum;
+  for(var i = 2; i <= num; i++){
+    prNum = true;
+    for(var j= 0; j <= num-1; j++){
+      if(i%prArray[j]===0){
+        prNum = false;
+        break;
+      }
+    }if(prNum){
+    prArray.push(i);
+  }
+  }
+ var summa = prArray.reduce(function(a,b){
+   return a+b;
+ }); 
+  return summa;
+}
+
+sumPrimes(10);
