@@ -1,0 +1,27 @@
+
+function smallestCommons(arr) {
+  arr.sort();
+  if(arr[1] - arr[0] === 1){
+    return arr[1]*arr[0];
+  } 
+  var work = true;
+  var somNum = arr[1]*(arr[1]-1);
+  var select = 0;
+  while(work){
+    for(var i = arr[1]-2; i >=arr[0]; i--){
+      if(somNum % i === 0) select++;
+else break;
+    }if(select=== arr[1]- arr[0] -1){
+      work = false;
+      return somNum;
+    }else{
+      select = 0;
+      somNum +=arr[1]*(arr[1]-1);
+    
+    }
+  }
+ 
+}
+
+
+smallestCommons([1,5]);
