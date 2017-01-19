@@ -1,0 +1,29 @@
+
+function steamrollArray(arr) {
+  // I'm a steamroller, baby
+  var newArray = [];
+  myFunction(arr);
+  function myFunction(arr){
+    arr.forEach(function(subarray){
+      if(!Array.isArray(subarray)) {
+        newArray.push(subarray);
+      } else {
+        myFunction(subarray);
+      }
+    });
+  }
+  return newArray;
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
+
+//второй вариант 
+function steamrollArray(arr) {
+ var newArray = arr.reduce(function(a, b) {
+    return a.concat(b);
+  }, []);
+  var myArr = newArray.join('');
+  return myArr.split('');
+}
+steamrollArray([1, [2], [3, [[4]]]]);
