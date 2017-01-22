@@ -1,0 +1,24 @@
+
+function addTogether() {
+  var results;
+  if(arguments.length <=3){
+    var a1 = arguments[0];
+    var a2 = arguments[1];
+    if(typeof(a2)==='number'){
+      if(typeof(a1) ==='number'){
+      
+        results = a1 +a2;
+      }
+    } else if(a2===undefined && typeof(a1)==='number'){
+      return function(a2){
+        if(typeof(a2)==='number'){
+          return a1 + a2;
+        }
+        else return results;
+      };
+    }
+  }
+  return results;
+}
+
+addTogether(2,3);
