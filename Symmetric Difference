@@ -1,0 +1,6 @@
+
+function sym(args) {
+  return Array.prototype.reduce.call(arguments,(a,b)=>a.filter(c=>b.every(d=>c!=d)).concat(b.filter(c=>a.every(d=>c!=d))),[]).filter((e,i,a)=>a.indexOf(e)===i);
+}
+
+sym([1, 2, 3], [5, 2, 1, 4]);
