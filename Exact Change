@@ -1,0 +1,48 @@
+
+function checkCashRegister(price, cash, cid) {
+  var change=[];
+  // Here is your change, ma'am.
+ var money =[["PENNY", 1], ["NICKEL", 5], ["DIME", 10], ["QUARTER", 25], ["ONE", 100], ["FIVE", 500], ["TEN", 1000], ["TWENTY", 2000], ["ONE HUNDRED", 10000]];
+  var debt = cash * 100 - price*100;
+  var cashInDrawer = 0;
+  var rating = 0;
+  
+  for(i = money.length - 1; i >= 0; i--){
+    cid[i][1] = Math.round(cid[i][1] * 100);
+    cashInDrawer += cid[i][1];
+    rating = 0;
+    if(debt >= money[i][1]){
+      while(cid[i][1] - money[i][1] >= 0){
+        if(debt - money[i][1] >= 0){
+          cid[i][1] -= money[i][1];
+          debt -=money[i][1];
+          cashInDrawer -= money[i][1];
+          rating += money[i][1];
+        } else {
+          break;
+        }
+      }
+      change.push([money[i][0], rating/100]);
+    }
+  }
+  
+  if(debt > 0){
+    return "Insufficient Funds";
+  } else if(cashInDrawer === 0){
+    return "Closed";
+  }
+  return change;
+}
+
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],
+// ["NICKEL", 2.05],
+// ["DIME", 3.10],
+// ["QUARTER", 4.25],
+// ["ONE", 90.00],
+// ["FIVE", 55.00],
+// ["TEN", 20.00],
+// ["TWENTY", 60.00],
+// ["ONE HUNDRED", 100.00]]
+
+checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
