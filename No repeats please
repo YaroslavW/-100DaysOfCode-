@@ -1,0 +1,55 @@
+
+function permAlone(str) {
+ 
+  if(str.length===0){
+    return 1;
+  }
+   var amount=0;
+  for(var i = 0; i < str.length; i++){
+    if(str[i]!== arguments[1]){
+      amount +=permAlone(str.substring(0,i)+str.substring(i+1),str[i]);
+      
+    }
+  }
+  return amount;
+}
+
+permAlone('aab');
+
+=============
+
+function permAlone(str) {
+  
+  var arr = str.split('');
+  var permutations = [];
+  var regex = /(.)\1+/g;
+  
+  function swap(index1, index2) {
+    var aux = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = aux;
+  }
+  
+  function generate(int) {
+    if (int === 1) {
+      permutations.push(arr.join(''));
+    } else {
+      for (var i = 0; i < int - 1; i++) {
+        generate(int - 1);
+        if (int % 2 === 0) {
+          swap(i, int-1);
+        } else {
+          swap(0, int-1);
+        }
+      }
+      generate(int - 1);
+    }  
+  }      
+  
+  generate(arr.length);
+  
+  var filtered = permutations.filter(function(string) {
+    return !string.match(regex);
+  });
+  
+  return filtered.length;
