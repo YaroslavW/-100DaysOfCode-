@@ -1,0 +1,85 @@
+
+function makeFriendlyDates(str) {
+   
+ 
+  var months = ['January','February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  
+   function convertDate(str) {
+    var dateStr = str.split('-');
+    return (new Date(Date.UTC(dateStr[0], dateStr[1] - 1, dateStr[2])));
+
+  }
+  var dateA = convertDate(str[0]);
+  var dateB = convertDate(str[1]);
+  
+  function dayEnd (val){
+   if(val==1 || val ==21 || val == 31){
+     return val +'st';
+   }else if(val == 2 || val == 22){
+     return val + 'nd';
+   } else if(val == 3 || val == 33){
+     return val +'rd';
+   }else{
+     return val + 'th';
+   }
+  }
+
+   function monthDiff(dateA, dateB) {
+    var monthB = dateB.getUTCFullYear() * 12 + dateB.getUTCMonth();
+    var monthA = dateA.getUTCFullYear() * 12 + dateA.getUTCMonth();
+    return monthB - monthA;
+  }
+
+  
+  function dayDiff(dateA, dateB) {
+    if(dateB.getUTCMonth() === dateA.getUTCMonth()){
+      return dateA.getUTCDate()-dateB.getUTCDate();
+    }
+    return 0;
+  }
+
+  
+  function getMonth(date) {
+    return months[date.getUTCMonth()];
+  }
+ 
+
+
+  
+ function displayDate() {
+
+  
+    if (dateB.getTime() - dateA.getTime() === 0) {
+      return [getMonth(dateA) + ' ' + dayEnd(dateA.getUTCDate()) + ', ' + dateA.getUTCFullYear()];
+    }
+
+   
+    if (dateA.getUTCMonth() === dateB.getUTCMonth() && dateA.getUTCFullYear() === dateB.getUTCFullYear()) {
+      return [getMonth(dateA) + ' ' + dayEnd(dateA.getUTCDate()), dayEnd(dateB.getUTCDate())];
+    }
+
+    
+    if (monthDiff(dateA, dateB) < 12 && dateA.getUTCFullYear() !== dateB.getUTCFullYear() ) {
+      return [getMonth(dateA) + ' ' + dayEnd(dateA.getUTCDate()), getMonth(dateB) + ' ' + dayEnd(dateB.getUTCDate())];
+    }
+
+   
+    if (monthDiff(dateA, dateB) <= 12 && dayDiff(dateA, dateB)>0) {
+      return [getMonth(dateA) + ' ' + dayEnd(dateA.getUTCDate())+', '+dateA.getUTCFullYear(), getMonth(dateB) + ' ' + dayEnd(dateB.getUTCDate())];
+    }
+
+  
+    if (monthDiff(dateA, dateB) < 12) {
+      return [getMonth(dateA) + ' ' + dayEnd(dateA.getUTCDate())+', '+dateA.getUTCFullYear(), getMonth(dateB) + ' ' + dayEnd(dateB.getUTCDate())];
+    }
+
+    
+    return [getMonth(dateA) + ' ' + dayEnd(dateA.getUTCDate()) + ', ' + dateA.getUTCFullYear(), getMonth(dateB) + ' ' + dayEnd(dateB.getUTCDate()) + ', ' + dateB.getUTCFullYear()];
+  }
+  
+  
+
+  return displayDate();
+}
+
+makeFriendlyDates(['2016-07-01', '2016-07-04']);
