@@ -1,0 +1,18 @@
+function pairwise(arr, arg) {
+  var answers = [];
+  var sum = 0;
+  if(arr.length < 1){return 0;}
+  for(var i = 0; i < arr.length; i++){
+    for(var j = i + 1; j < arr.length; j++){
+      if(arr[i] + arr[j]===arg && answers.indexOf(i)== -1 && answers.indexOf(j)== -1){
+        answers.push(i,j);
+      }
+    }
+  }
+  sum = answers.reduce(function(a,b){
+    return a + b;
+  });
+  return sum;
+}
+
+pairwise([1,4,2,3,0,5], 7);
