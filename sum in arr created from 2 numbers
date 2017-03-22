@@ -1,0 +1,36 @@
+function addNum(x,y,n){
+     var maxNum;
+    var minNum;
+    var myArr=[];
+    if(n < 0 || n == undefined){
+       n = 1;
+    }
+   
+    function add(maxNum, minNum){
+            while(minNum <= maxNum){
+                myArr.push(minNum);
+                minNum += n;
+            }
+            return myArr;
+        }
+    function sumArr(myArr){
+                var sum=0;
+    for(var i = 0; i < myArr.length; i++){
+                sum += myArr[i];
+    }
+    return sum;
+}    
+    if(x > y){
+        maxNum = x;
+        minNum = y;
+        add(maxNum, minNum);
+        
+    }else{
+        maxNum = y;
+        minNum = x;
+        add(maxNum,minNum);
+        
+    }
+  return sumArr(myArr);
+}
+alert(addNum(5, 2, -1));
